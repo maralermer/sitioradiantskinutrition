@@ -1,0 +1,901 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background: #e8e7e7df;
+    color: #000000;
+    padding: 1em;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 25px;
+    text-align: left;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.contenedora {
+    width: min(50rem, 100%);
+    margin-inline: auto;
+    padding: 1rem;
+}
+
+.planta {
+    display: none;
+}
+
+header,
+footer {
+    background-color: rgb(144, 192, 140)
+}
+
+header .contenedora {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header {
+    background-color:rgba(255, 255, 255, 0.897);
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-style: normal;
+    margin: auto;
+    position: sticky;
+    top: 0;
+    z-index: 8000;
+}
+
+/* Imagen de las plantas */
+header img {
+    max-height: 500px;
+    margin-right: 15px;
+    position:absolute;
+    z-index: 22;
+    top: 0;
+    pointer-events: none;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 9999;
+}
+
+#logo img {
+    padding: 0.5rem;
+    max-width: 150px;
+    margin: -5em .75em -5em 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 9999;
+}
+
+nav{
+    margin-right: 1em;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+#batido-verde {
+    text-align: center;
+    background-image: url("../imagenes/homepage.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 2em;
+}
+
+section#introduccion {
+    margin: 5em;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-width: 600px;
+    margin: auto !important;
+}
+
+.text-box {
+    background-color:rgba(255, 255, 255, 0.8);
+    color: black;
+    padding: 4em;
+    margin: 10em;
+    border-radius: 40px;
+}
+
+.menu-horizontal{
+    list-style: none;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.menu-horizontal > li > a {
+    padding: 15px 20px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+  
+.menu-horizontal > li:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.menu-vertical {
+    position: absolute;
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.8);
+    list-style: none;
+    padding: 0;
+    display: none;
+    z-index: 1000;
+}
+  
+.menu-horizontal > li:hover .menu-vertical {
+    display: block;
+    position: absolute;
+    margin-top: 15px;
+}
+  
+.menu-vertical li a {
+    display: block;
+    padding: 15px 15px 15px 20px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.menu-vertical li:hover{
+    background-color: #e9e6e6;
+}
+
+.menu-vertical li:hover .menu-vertical{
+    display: block;
+}
+
+.menu-vertical li a{
+    display: block;
+    color: black;
+    padding: 15px 15px 15px 20px;
+    text-decoration: none;
+}
+
+/* botón "hamburguesa" */
+.menu-btn {
+    background-color: #ffffff ;
+    border-radius: 50%;
+    padding: .75rem;
+    width: 3rem;
+    aspect-ratio: 1;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+  
+    /* fijo, no "scrolea", no genera scroll */
+    position: fixed;
+    /* emplazamiento 1 renglón del borde superior */
+    top: 1em;
+    /* emplazamiento 1 renglón del borde derecho */
+    right: 1em;
+    /* en capa superior, casi arriba de todo */
+    z-index: 9000;
+}
+  
+/* cada barra de la "hamburguesa" */
+.menu-btn .btn-linea {
+    width: 25px;
+    height: 3px;
+    margin: 4px 0 4px 0;
+    background: gray;
+    transition: all 0.3s ease-out;
+    /* capa superior, pero no parece */
+    position: relative;
+    /* capa superior, casi arriba de todo */
+    z-index: 9000;
+}
+  
+/* cada barra, transformacion para formar la "X" */
+.menuVisible .menu-btn .btn-linea {
+    transform: rotate(180deg);
+}
+/* Las tres barras para formar la "X" */
+.menuVisible .menu-btn .btn-linea:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 6px);
+}
+.menuVisible .menu-btn .btn-linea:nth-child(2) {
+    opacity: 0;
+}
+.menuVisible .menu-btn .btn-linea:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -6px);
+}
+  
+/* menú propiamente dicho */
+nav ul {
+    background-color: hsl(155, 34%, 34%);
+    display: grid;
+    place-items: center;
+    place-content: center;
+  
+    /* sale del fondo, queda fijo */
+    position: fixed;
+    /* emplazamiento, estirado en toda la ventana !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+    inset: 0;
+    /* capa superior, arriba de casi todo */
+    z-index: 8000;
+    /* escondido "a la derecha" */
+    translate: 100%;
+    
+    transition: all .6s ease; /* anima cuando "nav" NO tiene la clase "menuVisible" */
+}
+  
+/* el menu cuando "nav" tiene la clase "menuVisible" */
+.menuVisible ul {
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: all .4s ease; /* anima cuando "nav" tiene la clase "menuVisible" */
+    
+    /* se muestra */
+    translate: 0;
+}
+  
+/* cada vínculo del menu */
+nav ul li a {
+    border-bottom: solid 3px hsl(0 0% 100% / 0.1);
+    color: white;
+    display: block;
+    font-size: 1.5rem;
+    margin-block-end: .5rem;
+    width: min(70vw, 20rem); /* el valor menor entre el 40% del ancho de la ventana del navegador y 240px */
+    text-align: center;
+    padding: .5rem;
+    text-decoration: none;
+    }
+  
+nav ul li a:hover {
+    border-bottom: solid 3px hsl(0 0% 100% / 0.5);
+    transition: all .3s;
+}
+
+h1 {
+    font-family: "Abril Fatface", serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.5em;
+    text-align: center;
+    margin-bottom: .9em;
+    color: black;
+    font-size: 3em;
+}
+
+h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+    font-style: bold;
+    line-height: 2em;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: .5em;
+    color: black;
+    font-size: 2em;
+}
+
+h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+    font-style: bold;
+    font-style: italic;
+    font-size: large;
+    line-height: 2em;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: .5em;
+    color: black;
+}
+
+h4 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+    font-style: bold;
+    font-style: italic;
+    font-size: larger;
+    line-height: 2em;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: .5em;
+    color: black
+}
+
+
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: 
+      "header"
+      "nav"
+      "main"
+      "footer";
+    grid-template-rows: auto auto 1fr;
+  }
+  
+body{
+    display: contents;
+}
+
+header > menu-principal { grid-area: header; }
+nav                     { grid-area: nav; }
+main                    { grid-area: main; }
+footer                  { grid-area: footer; }
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .5em;
+}
+
+footer >p:last-child {
+    margin-block-end: 0;
+}
+
+
+
+/* HTML 2 NUTRICION Y PIEL */
+p {
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 2em;
+    margin: 5% 0;
+}
+  
+ol {
+    text-align: justify;
+    font-size: 1rem;
+}
+
+ 
+#main {
+    position: relative;
+}
+
+section#nutri-piel {
+    display: flex;
+    flex-flow: column;
+    justify-content:space-between;
+    flex-direction: row;
+    align-items: center;
+    margin: 2%;
+    max-width: 600px;
+    margin: auto !important;
+}
+
+ol {
+    margin-left: 10%;
+    font-style: italic;
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 2em;
+    margin: 5% 0;
+}
+
+
+section:not(#batido-verde) {
+    justify-content:space-between;
+    flex-direction: row;
+    align-items: center;
+    margin: 2%;
+    max-width: 600px;
+    margin: auto !important;
+}
+
+.frame {
+    position: absolute;
+    left: 43%;
+    width: 608px;
+    height: 608px;
+    margin-left: -200px;
+    border-radius: 2px;
+    box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+    overflow: hidden;
+    background: white;
+    color: #333;
+}
+  
+.gallery {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 100%; 
+    height: 100%;
+}
+.gallery label {
+    position: absolute;
+    width: 188px;
+    height: 188px;
+    left: 4px;
+    top: 4px;
+    text-indent: -9999px; 
+    background: grey;
+    background-size: cover;
+    background-position: center;
+    transition: 
+    width .5s ease-in-out,
+    height .5s ease-in-out,
+    top .5s ease-in-out,
+    left .5s ease-in-out,
+    z-index .5s step-end; 
+}
+.gallery label:nth-child(n+8) {
+    top: 208px;
+}
+.gallery label:nth-child(n+14) {
+    top: 408px;
+}
+.gallery label:nth-child(3n-2) {
+    left: 208px;
+}
+.gallery label:nth-child(3n-6) {
+    left: 408px;
+}
+  
+input[type="checkbox"]:checked + label {
+    left: 4px;
+    top: 4px;
+    width: 608px;
+    height: 608px;
+    z-index: 100;
+}
+  
+#i1 + label {
+    background-image: url(../imagenes/gallery1.jpg);
+}
+  
+#i2 + label {
+    background-image: url(../imagenes/gallery2.jpg);
+}
+  
+#i3 + label {
+    background-image: url(../imagenes/gallery5.jpg);
+}
+  
+#i4 + label {
+    background-image: url(../imagenes/gallery6.jpg);
+}
+  
+#i5 + label {
+    background-image: url(../imagenes/gallery7.jpg);
+}
+  
+#i6 + label {
+    background-image: url(../imagenes/gallery9.jpg);
+}
+  
+#i7 + label {
+    background-image: url(../imagenes/gallery4.jpg);
+}
+  
+#i8 + label {
+    background-image: url(../imagenes/gallery8.jpg);
+}
+  
+#i9 + label {
+    background-image: url(../imagenes/gallery3.jpg);
+}
+  
+input[type="checkbox"] {
+    appearance: none;
+    /* For iOS < 15 to remove gradient background */
+    background-color: transparent;
+    /* Not removed via appearance */
+    margin: 0;
+    display: none;
+}
+
+/* HTML 4 RUTINAS */
+#rutinas {
+    text-align: center;
+    background-image: url("../imagenes/rutinas.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 2em;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    max-width: 750px;
+    border-top: 2px solid var(--col-green-4);
+}
+
+table {
+    border-collapse: collapse;
+    border: none !important;
+    width: 100% !important;
+    max-width: 750px;
+    margin: auto;
+    table-layout: fixed;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+td {
+    display: table-cell;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.small, small {
+    font-size: 80%;
+    font-weight: 400;
+    display: inline-block;
+    text-transform: capitalize;
+    color: black;
+    font-size: 0.8rem;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    transform-origin: 10% 45%;
+    margin-left: 0.2rem;
+}
+
+.article-text tr td:nth-child(2), .article-text tr td:nth-child(2) p {
+    font-size: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: left;
+}
+
+
+
+/* LOS @MEDIA */
+
+/* cambios a partir de los 640px */
+@media(min-width: 40em) {
+
+  /* el menú deja de ser fijo */
+  header nav {
+    /* para que esté en capa superior pero que no parezca */
+    position: relative;
+    }
+
+  #logo img {
+    margin-left: -6em;
+    max-width: 250px;
+    margin-bottom: auto;
+  }
+    
+  /* botón "hamburguesa" oculto */
+  .menu-btn {
+    display: none;
+  }
+
+  /* menu visible */
+  header nav ul,
+  header .menuVisible ul {
+    /* caja flexible para menu horizontal*/
+    display: flex;
+    /* separación entre sus elementos */
+    gap: .25em;
+
+    /* para que esté en capa superior pero que no parezca */
+    position: relative;
+
+    /* elimina desplazamiento */
+    translate: 0;
+
+    /* elimina fondo */
+    background-color: unset;
+  }
+    
+  /* items de lista  que contienen los vínculos del menu */
+  header nav ul li {
+    min-width: 4em; /* que no midan menos de: */
+  }
+
+  /* vínculos del menu principal */
+  header nav ul li a {
+    border-radius: .25em ;
+    color: black;
+    font-size: 1rem;
+    width: auto;
+    padding: .25em 1em;
+    text-align: center;
+    display: block; /* para que sean "cajas" */
+    margin-block-end: unset;
+    border-block-end: unset;
+  }
+  
+  /* cuando el cursor se posiciona sobre los vínculos */
+  header nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    border-block-end: unset;
+  }
+
+  body {
+    grid-template-areas: 
+    "header header"
+    "nav    nav"
+    "main  main"
+    "footer footer";
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+/* cambios a partir de los 800px */
+@media(min-width: 50em) {
+
+    .introduccion {
+      padding: 1em;
+    }
+}
+  
+/* cambios a partir de los 1200px */
+ @media(min-width: 75em) {
+  
+    .introduccion {
+      background-color: hsl(198 50% 44% / 0.1);
+      margin-block-start: 0;
+      margin-block-end: 3em;
+      padding-inline: 4em;
+      width: 100%;
+      min-height: 60vh;
+      display: grid;
+      align-items: center;
+      align-content: center;
+    }
+
+    #batido-verde {
+        background-position: center bottom;
+        background-size: cover;
+        min-height: 100vh;
+        padding: 2em;
+        display: flex;
+        align-items: center;
+    }
+
+    #rutinas {
+        background-position: center bottom;
+        background-size: cover;
+        min-height: 100vh;
+        padding: 2em;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+  
+    .logo {
+      margin-left: 2em;
+    }
+  
+    nav {
+      margin-right: 1em;
+      font-size: 16px;
+      margin-top: 0;
+    }
+    
+    .menu-vertical {
+      position: static;
+      display: none;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      list-style: none;
+      padding: 0;
+    }
+  
+    .menu-horizontal > li:hover .menu-vertical {
+      display: block;
+      position: static;
+      margin-top: 0;
+    }
+
+    .text-box {
+        background-color:rgba(255, 255, 255, 0.8);
+        color: black;
+        padding: 2em;
+        margin: 0 auto;
+        border-radius: 5px;
+    }
+
+    h1 {
+        font-family: "Abril Fatface", serif;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 2em;
+        text-align: center;
+        margin-top: 1em;
+        margin-bottom: .5em;
+        color: black;
+        font-size: 2em;
+    }    
+
+    section#nutri-piel {
+        display: flex;
+        flex-flow: column;
+        justify-content:space-between;
+        flex-direction: row;
+        align-items: center;
+        margin: 2%;
+        max-width: 600px;
+        margin: auto !important;
+    }
+    
+    ol {
+        margin-left: 10%;
+        font-style: italic;
+        text-align: justify;
+        font-size: 1rem;
+        line-height: 2em;
+        margin: 5% 0;
+    }
+    
+    section#batido-verde {
+        justify-content:space-between;
+        flex-direction: row;
+        align-items: center;
+        margin: 2%;
+        margin: auto !important;
+    }
+
+    section:not(#batido-verde) {
+        justify-content:space-between;
+        flex-direction: row;
+        align-items: center;
+        margin: 2%;
+        max-width: 300px;
+        margin: auto !important;
+    }
+    
+    section#rutinas {
+        justify-content:space-between;
+        flex-direction: row;
+        align-items: center;
+        margin: 2%;
+        margin: auto !important;
+    }
+
+    .frame {
+        position: absolute;
+        left: 50%;
+        width: 400px;
+        height: 400px;
+        margin-left: -200px;
+        border-radius: 2px;
+        box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        background: white;
+        color: #333;
+    }
+
+    .gallery {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: white;
+        width: 100%;
+        height: 100%;
+    }
+
+    .gallery label {
+        position: absolute;
+        width: 128px;
+        height: 128px;
+        left: 4px;
+        top: 4px;
+        text-indent: -9999px;
+        background: grey;
+        background-size: cover;
+        background-position: center;
+        transition: width .5s ease-in-out, height .5s ease-in-out, top .5s ease-in-out, left .5s ease-in-out, z-index .5s step-end;
+    }
+    .gallery label:nth-child(n+8) {
+        top: 136px;
+    }
+    .gallery label:nth-child(n+14) {
+        top: 268px;
+    }
+    .gallery label:nth-child(3n-2) {
+        left: 136px;
+    }
+    .gallery label:nth-child(3n-6) {
+        left: 268px;
+    }
+
+    input[type="checkbox"]:checked + label {
+        left: 4px;
+        top: 4px;
+        width: 392px;
+        height: 392px;
+        z-index: 100;
+    }
+
+    .espacio {
+    margin-top: 26em;
+    margin-bottom: .5em;
+    line-height: 2em;
+    text-align: justify;
+    }
+}
+    
+
+@media (min-width: 60em) {
+  
+    body {
+
+      grid-template-areas: 
+      "header header header"
+      "nav    main   main"
+      "footer footer footer";
+      grid-template-columns: min-content 2fr 1fr;
+    }
+
+    .planta {
+        display: block;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        max-height: 25rem;
+        z-index: 22;
+        top: 0;
+        pointer-events: none;
+        border-radius: 8px;
+        border-style: none;
+    } 
+
+    .espacio {
+        margin-top: 40em;
+        margin-bottom: .5em;
+        line-height: 2em;
+        text-align: justify;
+    }
+}
+
+
+@media (min-width: 600px)  {
+
+    nav {
+        margin-top: 0;
+    }
+}
